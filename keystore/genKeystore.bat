@@ -1,0 +1,1 @@
+"%JAVA_HOME%/bin/keytool.exe" -genkey -alias myApp -keystore keystore.jks -validity 3650

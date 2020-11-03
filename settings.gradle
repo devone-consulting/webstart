@@ -1,0 +1,3 @@
+rootProject.name = 'webstart'
+
+include 'myApp', 'webstart'

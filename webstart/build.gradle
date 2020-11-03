@@ -1,0 +1,33 @@
+plugins {
+    id 'java'
+    id 'war'
+    id 'eclipse'
+}
+
+repositories {
+    jcenter()
+}
+
+configurations {
+	myApp
+}
+
+dependencies {
+	myApp project(':myApp')
+}
+
+sourceSets {
+	main {
+		resources {
+			srcDir "${project.projectDir}/src/main/resources"
+		}
+	}
+}
+
+war {
+	baseName = 'webstart'
+    from(configurations.myApp) {
+        include 'myApp.jar'
+		into new File('application-jars')
+    }
+}

@@ -1,0 +1,38 @@
+plugins {
+    id 'java'
+    id 'eclipse'
+}
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    compile files('libs/javaws.jar')
+}
+
+jar {
+  baseName = 'myApp'
+}
+
+task signJar(dependsOn: 'jar'){
+	def keystoreFile = new File('keystore/keystore.jks')
+	def keystorepass = 'password'
+	def keyalias = 'myApp'
+	doLast{
+		def signDir = new File("$buildDir/libs")
+		signDir.mkdirs()
+		ant.signjar(
+			destDir: "${signDir.absolutePath}",
+					  jar: 'build/libs/*.jar',
+					  alias: keyalias,
+					  storetype:"jks",
+					  keystore:"${keystoreFile.absolutePath}",
+					  storepass: keystorepass,
+					  verbose:true,
+					  preservelastmodified:"true"
+		)
+	}
+}
+
+build.dependsOn signJar
