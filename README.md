@@ -8,6 +8,6 @@ Tested in Windows 10 with Java 1.8 and Tomcat 9
 3. Go to webstart/keystore to generate your own keystore. Password must be "password"
 4. Execute build.bat
 5. Find the webstart.war at "webstart/webstart/build/libs"
-6. Copy webstart.war to your Tomcat directory inside the directory "webapps"
+6. Copy webstart.war to your Tomcat directory inside "webapps"
 7. Start Tomcat
 9. Execute startMyApp.bat
